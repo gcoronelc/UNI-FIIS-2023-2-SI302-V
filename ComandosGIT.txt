@@ -1,7 +1,7 @@
 ﻿CLONAR EL REPOSITORIO
 ----------------------------------------------
 
-git clone https://github.com/vallegrande/POO_222.git
+git clone https://github.com/gcoronelc/UNI-FIIS-2023-2-SI302-V.git
 
 
 
