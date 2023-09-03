@@ -15,6 +15,17 @@
 - Canal Youtube: https://www.youtube.com/DesarrollaSoftware
 - Cursos Virtuales: http://gcoronelc.github.io
 
+# DELEGADOS
+
+## Delegado
+
+- Nombre: José Alexander Venegas Zambrano
+- Correo: jose.venegas.z@uni.pe
+
+## Subdelegado
+
+- Nombre: Xavi Julio Huaman Bonifacio
+- Correo: xavi.huaman.b@uni.pe
 
 # RECURSOS UTILES
 
