@@ -1,0 +1,7 @@
+
+
+
+
+title: "Introducción a R Markdown - GitHub"
+author: "Alarcón González Edgar Gerardo"
+output: rmarkdown::github_document
