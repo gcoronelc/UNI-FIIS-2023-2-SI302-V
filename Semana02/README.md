@@ -16,3 +16,7 @@
 - Parte 8: https://youtu.be/1_nFWcgglYI?list=PLIRq7nByT7aRuBgD4UVRjrcUZFM8Fkbut
 - Parte 9: https://youtu.be/DkPvEnTQDmo?list=PLIRq7nByT7aRuBgD4UVRjrcUZFM8Fkbut
 
+## Otros videos
+
+- Tipos de datos: https://youtu.be/edOvmNW_V9w?list=PLIRq7nByT7aQLRzBkf66cjkZ62HefyIfK
+
