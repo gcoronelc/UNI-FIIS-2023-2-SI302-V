@@ -11,6 +11,11 @@ public class MateService {
 		return (n1 + n2);
 	}
 	
+	public float sumar(float n1, float n2) {
+		System.out.println("Sumar float");
+		return (n1 + n2);
+	}
+	
 	public double sumar(double n1, double n2) {
 		System.out.println("Sumar double");
 		return (n1 + n2);
