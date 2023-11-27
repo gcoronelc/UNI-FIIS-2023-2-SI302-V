@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CONSULTAR CLIENTES</h1>
+    <form>
+        <div>
+            <table>
+                <tr>
+                    <td>Paterno</td>
+                    <td>Materno</td>
+                    <td>Nombre</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="paterno"></td>
+                    <td><input type="text" id="materno"></td>
+                    <td><input type="text" id="nombre"></td>
+                    <td><button type="button" id="btnConsultar">Consultar clientes</button></td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>CODIGO</th>
+                <th>PATERNO</th>
+                <th>MATERNO</th>
+                <th>NOMBRE</th>
+                <th>DNI</th>
+            </tr>
+        </thead>
+        <tbody id="idtbody">
+        </tbody>
+    </table>
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            console.log("ready!");
+
+            // Programar botones
+            $("#btnConsultar").click(fnBtnConsultar);
+
+        });
+
+        function fnBtnConsultar() {
+            // Datos
+            let paterno = $("#paterno").val();
+            let materno = $("#materno").val();
+            let nombre = $("#nombre").val();
+            let datos = { "paterno": paterno, "materno": materno, "nombre": nombre };
+            let url = "http://localhost:8080/clientes/datos";
+            // Proceso
+            $.get(url, datos, function (data) {
+                let tbodyDoc = "";
+                for (let i = 0; i < data.length; i++) {
+                    let rec = data[i];
+                    tbodyDoc += "<tr>";
+                    tbodyDoc += "<td>" + rec.codigo + "</td>";
+                    tbodyDoc += "<td>" + rec.paterno + "</td>";
+                    tbodyDoc += "<td>" + rec.materno + "</td>";
+                    tbodyDoc += "<td>" + rec.nombre + "</td>";
+                    tbodyDoc += "<td>" + rec.dni + "</td>";
+                    tbodyDoc += "</tr>";
+                }
+                $("#idtbody").html(tbodyDoc);
+            });
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

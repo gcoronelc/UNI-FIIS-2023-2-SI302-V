@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CREAR CUENTA</h1>
+    <form>
+        <div>
+            <table>
+                <tr>
+                    <td>Cliente</td>
+                    <td>
+                        <select id="cliente">
+                            <option value="01">Yasmin</option>
+                            <option value="02">Nicole</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Moneda</td>
+                    <td>
+                        <select id="moneda">
+                            <option value="01">Soles</option>
+                            <option value="02">Dolares</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Importe</td>
+                    <td><input type="number" id="importe"></td>
+                </tr>
+                <tr>
+                    <td>Clave</td>
+                    <td><input type="password" id="clave"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><input type="button" value="Procesar" id="btnProcesar">
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="util.js"></script>
+    <script>
+        $(function () {
+            console.log("ready!");
+            fnLlenarClientes();
+
+            // Programar botones
+            $("#btnProcesar").click(fnBtnProcesar);
+
+        });
+
+        function fnLlenarClientes() {
+            // Parametros
+            var settings = {
+                "url": "http://localhost:8080/clientes/combo",
+                "method": "GET",
+                "timeout": 0,
+            };
+            // Proceso
+            $.ajax(settings).done(function (response) {
+                fnLlenarCombo($("#cliente"),response);
+            });
+        }
+
+
+        function fnBtnProcesar() {
+            // Datos
+            let cliente = $("#cliente").val();
+            let moneda = $("#moneda").val();
+            let importe = $("#importe").val();
+            let clave = $("#clave").val();
+            let empleado = "0004";
+            let datos = { "cliente": cliente, "moneda": moneda, "importe": importe, "clave": clave, "empleado": empleado };
+            let url = "http://localhost:8080/cuentas/crear";
+            // Proceso
+            var settings = {
+                "url": url,
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify(datos),
+            };
+            $.ajax(settings).done(function (response) {
+                let mensaje = response.mensaje;
+                if (response.codigo == -1) {
+                    mensaje = "ERROR; datos incorrectos";
+                }
+                alert(mensaje);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

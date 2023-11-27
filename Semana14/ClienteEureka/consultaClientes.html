@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CONSULTAR CLIENTES</h1>
+    <form>
+        <div>
+            <label>Nombre o apellido:</label>
+            <input type="text" id="idDato">
+            <button type="button" id="btnConsultar">Consultar clientes</button>
+        </div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>CODIGO</th>
+                <th>PATERNO</th>
+                <th>MATERNO</th>
+                <th>NOMBRE</th>
+                <th>DNI</th>
+            </tr>
+        </thead>
+        <tbody id="idtbody">
+        </tbody>
+    </table>
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            console.log("ready!");
+
+            // Programar botones
+            $("#btnConsultar").click(fnBtnConsultar);
+
+        });
+
+        function fnBtnConsultar() {
+            let idDato = $("#idDato").val();
+            let url = "http://localhost:8080/clientes";
+            if(idDato.length > 0){
+                url += "/" + idDato;
+            }
+            $.get(url,  function (data) {
+                let tbodyDoc = "";
+                for (let i = 0; i < data.length; i++) {
+                    let rec = data[i];
+                    tbodyDoc += "<tr>";
+                    tbodyDoc += "<td>" + rec.codigo + "</td>";
+                    tbodyDoc += "<td>" + rec.paterno + "</td>";
+                    tbodyDoc += "<td>" + rec.materno + "</td>";
+                    tbodyDoc += "<td>" + rec.nombre + "</td>";
+                    tbodyDoc += "<td>" + rec.dni + "</td>"; 
+                    tbodyDoc += "</tr>";
+                }
+                $("#idtbody").html(tbodyDoc);
+            });
+        }
+
+    </script>
+
+
+</body>
+
+</html>
